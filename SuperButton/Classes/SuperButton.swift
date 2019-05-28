@@ -23,7 +23,13 @@ public class SuperButton: UIImageView {
         self.isUserInteractionEnabled = false
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 40
-        self.image = #imageLiteral(resourceName: "super_menu")
+        
+        
+        let podBundle = Bundle(for: self.classForCoder)
+        guard let bundleUrl = podBundle.url(forResource: "SuperButton", withExtension: "bundle") else { assert(false); return }
+        guard let bundle = Bundle(url: bundleUrl) else { assert(false); return }
+        guard let image = UIImage(named: "super_menu", in: bundle, compatibleWith: nil) else { assert(false); return }
+        self.image = image
     }
     
     required init?(coder aDecoder: NSCoder) {

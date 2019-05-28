@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DBC
 import SuperButton
 
 class ViewController: UIViewController {
@@ -22,7 +21,7 @@ class ViewController: UIViewController {
     }
     
     func setup() {
-        require(superButtonView != nil, "super button view must not be nil")
+        assert(superButtonView != nil)
         self.view.backgroundColor = .lightGray
         self.superButtonView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.superButtonView)

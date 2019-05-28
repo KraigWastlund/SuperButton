@@ -8,10 +8,10 @@
 
 import UIKit
 import AVFoundation
-import DBC
 
 var _nodeGrowScale: CGFloat = 2.0
 
+@available(iOS 8.2, *)
 public class SuperButtonView: UIView {
     
     // width and height static values are used to layout buttons
@@ -20,7 +20,7 @@ public class SuperButtonView: UIView {
     
     private let maxNumberOfNodes = 7
     
-    var nodes = [SuperNodeView]() {
+    public var nodes = [SuperNodeView]() {
         didSet {
             self.destroyViews()
             self.setupViews()
@@ -149,7 +149,7 @@ public class SuperButtonView: UIView {
     }
     
     func showNodes() {
-        require(nodes.count > 0, "Nodes must be set.")
+        assert(nodes.count > 0)
         UIView.animate(withDuration: 0.25, animations: {
             for node in self.nodes {
                 node.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -171,7 +171,7 @@ public class SuperButtonView: UIView {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             if self.superButton.bounds.contains(touch.location(in: self.superButton)) {
                 self.superButton.growNodesAndRotate()
@@ -180,7 +180,7 @@ public class SuperButtonView: UIView {
         }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.superButton.isGrown() {
             if let touch = touches.first {
                 for node in self.nodes {
@@ -194,7 +194,7 @@ public class SuperButtonView: UIView {
         }
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.superButton.isGrown() {
             if let touch = touches.first {
                 for node in self.nodes {

@@ -9,25 +9,25 @@
 import Foundation
 import UIKit
 import AVKit
-import DBC
 
-class SuperNodeView: UIView {
+@available(iOS 8.2, *)
+public class SuperNodeView: UIView {
     
     let superImageNode = SuperImageNode(frame: CGRect.zero)
     private let titleLabel = UILabel()
     var titleLabelYConstraint: NSLayoutConstraint!
     
-    var title: String = "" {
+    public var title: String = "" {
         didSet {
             titleLabel.text = title
         }
     }
-    var image: UIImage = UIImage() {
+    public var image: UIImage = UIImage() {
         didSet {
             self.superImageNode.image = image
         }
     }
-    var completion: ()->Void = {} {
+    public var completion: ()->Void = {} {
         didSet {
             self.superImageNode.completion = completion
         }
@@ -36,7 +36,7 @@ class SuperNodeView: UIView {
     var titleLabelFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .light)
     var titleLabelTextColor: UIColor = .white
     
-    convenience init(title: String, image: UIImage, completion: @escaping ()->Void) {
+    convenience public init(title: String, image: UIImage, completion: @escaping ()->Void) {
         self.init()
         initSet(title: title, image: image, completion: completion)
     }
@@ -129,7 +129,7 @@ class SuperNodeView: UIView {
 }
 
 
-class SuperImageNode: UIImageView {
+public class SuperImageNode: UIImageView {
     var completion: (() -> Void)!
     var isExploding: Bool = false
     
@@ -145,7 +145,7 @@ class SuperImageNode: UIImageView {
     }
     
     fileprivate func grow(_ scale: CGFloat) {
-        require(completion != nil, "Completion block must not be nil")
+        assert(completion != nil)
         if !isGrown() {
             layer.zPosition = 2
             UIView.animate(withDuration: 0.15, animations: { [weak self] in
