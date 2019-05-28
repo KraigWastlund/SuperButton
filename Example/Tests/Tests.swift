@@ -1,5 +1,5 @@
 import XCTest
-import SuperButton
+//import SuperButton
 
 class Tests: XCTestCase {
     

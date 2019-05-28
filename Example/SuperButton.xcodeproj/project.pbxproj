@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		13F4F50741E4BB7A30A18B90 /* Pods-SuperButton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperButton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperButton_Tests/Pods-SuperButton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		409588337FD9959B00C6F4A1 /* Pods-SuperButton_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperButton_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperButton_Example/Pods-SuperButton_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		42EE4F032A1DD98618CE8383 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		42EE4F032A1DD98618CE8383 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SuperButton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperButton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,10 +41,10 @@
 		607FACE51AFB9204008FA782 /* SuperButton_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperButton_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		7DBC6ADEC2BB8D3C2B18E2D7 /* SuperButton.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SuperButton.podspec; path = ../SuperButton.podspec; sourceTree = "<group>"; };
+		7DBC6ADEC2BB8D3C2B18E2D7 /* SuperButton.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SuperButton.podspec; path = ../SuperButton.podspec; sourceTree = "<group>"; };
 		8094029D5639AC4B2D013F5D /* Pods-SuperButton_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperButton_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperButton_Example/Pods-SuperButton_Example.release.xcconfig"; sourceTree = "<group>"; };
 		910D954B5E60FDAE4AAA2FD2 /* Pods_SuperButton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B813FA25631441B91B7CA335 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B813FA25631441B91B7CA335 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B8A133F75D8725485C8E16F0 /* Pods_SuperButton_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperButton_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E4F5ED85176CC1E3ACBD47 /* Pods-SuperButton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperButton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperButton_Tests/Pods-SuperButton_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,10 +212,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 3W3QAKTRFB;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 3W3QAKTRFB;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -226,6 +228,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -270,13 +273,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SuperButton_Example/Pods-SuperButton_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SuperButton/SuperButton.framework",
+				"${BUILT_PRODUCTS_DIR}/DBC/DBC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SuperButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DBC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -481,6 +484,7 @@
 			baseConfigurationReference = 409588337FD9959B00C6F4A1 /* Pods-SuperButton_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3W3QAKTRFB;
 				INFOPLIST_FILE = SuperButton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -496,6 +500,7 @@
 			baseConfigurationReference = 8094029D5639AC4B2D013F5D /* Pods-SuperButton_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3W3QAKTRFB;
 				INFOPLIST_FILE = SuperButton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -510,6 +515,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 13F4F50741E4BB7A30A18B90 /* Pods-SuperButton_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 3W3QAKTRFB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -532,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0E4F5ED85176CC1E3ACBD47 /* Pods-SuperButton_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 3W3QAKTRFB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

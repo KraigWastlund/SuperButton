@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'SuperButton_Example' do
   pod 'SuperButton', :path => '../'
+  pod 'DBC', :git => 'https://github.com/busybusy/DBC-Apple.git'
 
   target 'SuperButton_Tests' do
     inherit! :search_paths

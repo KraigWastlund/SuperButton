@@ -1,0 +1,34 @@
+PODS:
+  - DBC (1.2.0):
+    - DBC/Bridged (= 1.2.0)
+    - DBC/Objc (= 1.2.0)
+    - DBC/Swift (= 1.2.0)
+  - DBC/Bridged (1.2.0):
+    - DBC/Objc
+    - DBC/Swift
+  - DBC/Objc (1.2.0)
+  - DBC/Swift (1.2.0)
+  - SuperButton (0.1.0)
+
+DEPENDENCIES:
+  - DBC (from `https://github.com/busybusy/DBC-Apple.git`)
+  - SuperButton (from `../`)
+
+EXTERNAL SOURCES:
+  DBC:
+    :git: https://github.com/busybusy/DBC-Apple.git
+  SuperButton:
+    :path: "../"
+
+CHECKOUT OPTIONS:
+  DBC:
+    :commit: 6333daa6a69336d8af8b2ec5a55bbe50e37ef9ab
+    :git: https://github.com/busybusy/DBC-Apple.git
+
+SPEC CHECKSUMS:
+  DBC: ec1e0b9779661a1f3ba320b477cc2894182e9bec
+  SuperButton: 0562c82c54582a42bd5a7621e3a87d5eceaff7b3
+
+PODFILE CHECKSUM: edf4bd952d78fba77d66492fd92bb8c3a7d09293
+
+COCOAPODS: 1.5.2
