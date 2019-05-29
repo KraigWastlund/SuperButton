@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/SuperButton.svg?style=flat)](https://cocoapods.org/pods/SuperButton)
 
 ## Example
-![Alt text](Resources/3.png?raw=true "Three Buttons")
+![Alt text](ReadmeResources/3.jpg?raw=true "Three Buttons")
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
