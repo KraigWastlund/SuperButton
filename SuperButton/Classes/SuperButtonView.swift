@@ -15,19 +15,13 @@ var _nodeGrowScale: CGFloat = 2.0
 public class SuperButtonView: UIView {
     
     // width and height static values are used to layout buttons
-    var width: CGFloat = 320
+    var width: CGFloat = 360
     var height: CGFloat = 300
     
     private let maxNumberOfNodes = 7
     
-    public var nodes = [SuperNodeView]() {
-        didSet {
-            self.destroyViews()
-            self.setupViews()
-        }
-    }
-    
-    let superButton = SuperButton(frame: CGRect.zero)
+    var nodes: [SuperNodeView]!
+    var superButton: SuperButton!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,20 +31,17 @@ public class SuperButtonView: UIView {
         if frame.height > 0 {
             self.height = frame.height
         }
-        setup()
     }
     
-    convenience init(nodes: [SuperNodeView]) {
+    convenience public init(nodes: [SuperNodeView], mainButtonColor: UIColor) {
         self.init()
-        setup()
+        self.nodes = nodes
+        self.superButton = SuperButton(color: mainButtonColor)
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
-    }
-    
-    private func setup() {
     }
     
     func destroyViews() {
@@ -76,12 +67,15 @@ public class SuperButtonView: UIView {
         self.addConstraint(NSLayoutConstraint(item: self.superButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
         self.addConstraint(NSLayoutConstraint(item: self.superButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -40.0))
         
+        let screenWidth = UIScreen.main.bounds.size.width
+        let nodeWidth = (screenWidth / CGFloat(nodes.count)) - 10
+        let nodeHeight = nodeWidth * 2
+        
         // super node views
-        let points = getNodeCenterPoints(numberOfNodes: self.nodes.count)
+        let points = getNodeCenterPoints(numberOfNodes: self.nodes.count, nodeWidth: nodeWidth)
         assert(points.count == self.nodes.count)
         
-        let nodeWidth = (width / CGFloat(nodes.count)) - 20
-        let nodeHeight = nodeWidth * 2
+        
         for (i, node) in self.nodes.enumerated() {
             let superCenter = CGPoint(x: width / 2, y: height / 2)
             let point = points[i]
@@ -96,23 +90,22 @@ public class SuperButtonView: UIView {
         }
     }
     
-    private func getNodeCenterPoints(numberOfNodes: Int) -> [CGPoint] {
+    private func getNodeCenterPoints(numberOfNodes: Int, nodeWidth: CGFloat) -> [CGPoint] {
         
         assert(numberOfNodes <= maxNumberOfNodes)
         
         var points = [CGPoint]()
         for i in 0..<numberOfNodes {
-            points.append(point(buttonIndex: i))
+            points.append(point(buttonIndex: i, nodeWidth: nodeWidth))
         }
         
         return points
     }
     
-    private func point(buttonIndex: Int) -> CGPoint {
+    private func point(buttonIndex: Int, nodeWidth: CGFloat) -> CGPoint {
         
         // (all values are center)
-        
-        let xPadding: CGFloat = 60
+        let xPadding: CGFloat = nodeWidth
         let startAndEndingYValue: CGFloat = 100
         let middleYValue: CGFloat = 60
         let startXValue: CGFloat = xPadding

@@ -81,7 +81,7 @@ public class SuperNodeView: UIView {
         titleLabelYConstraint = NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal, toItem: superImageNode, attribute: .top, multiplier: 1.0, constant: -20.0)
         addConstraint(titleLabelYConstraint)
         
-        // super node
+        // node
         addConstraint(NSLayoutConstraint(item: superImageNode, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.75, constant: 0.0))
         addConstraint(NSLayoutConstraint(item: superImageNode, attribute: .height, relatedBy: .equal, toItem: superImageNode, attribute: .width, multiplier: 1.0, constant: 0.0))
         addConstraint(NSLayoutConstraint(item: superImageNode, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
@@ -137,7 +137,7 @@ public class SuperImageNode: UIImageView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = false
-        alpha = 1.0
+        // alpha = 1.0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -151,7 +151,7 @@ public class SuperImageNode: UIImageView {
             UIView.animate(withDuration: 0.15, animations: { [weak self] in
                 guard let s = self else { return }
                 s.transform = CGAffineTransform(scaleX: scale, y: scale)
-                s.alpha = 1.0
+                // s.alpha = 1.0
             })
             AudioServicesPlaySystemSound(1519) // Actuate `Peek` feedback (weak boom)
         }
@@ -167,7 +167,7 @@ public class SuperImageNode: UIImageView {
             UIView.animate(withDuration: 0.25, animations: { [weak self] in
                 guard let s = self else { return }
                 s.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                s.alpha = 0.6
+                // s.alpha = 0.6
             })
         }
     }

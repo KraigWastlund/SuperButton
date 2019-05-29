@@ -13,14 +13,16 @@ class ViewController: UIViewController {
 
     var superButtonView: SuperButtonView!
     
+    @IBOutlet weak var actionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        superButtonView = SuperButtonView()
-        superButtonView.nodes = nodes()
+        let mainButtonColor = UIColor(red: 0/255, green: 21/255, blue: 211/255, alpha: 1.0)
+        superButtonView = SuperButtonView(nodes: nodes(), mainButtonColor: mainButtonColor)
         setup()
     }
     
-    func setup() {
+    private func setup() {
         assert(superButtonView != nil)
         self.view.backgroundColor = .lightGray
         self.superButtonView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,48 +32,64 @@ class ViewController: UIViewController {
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[super(300)]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: views))
     }
     
-    func nodes() -> [SuperNodeView] {
+    private func fadeDisplayText(text: String) {
+        actionLabel.alpha = 0.0
+        actionLabel.text = text
+        UIView.animate(withDuration: 0.25, animations: { [weak self] in
+            self?.actionLabel.alpha = 1.0
+        }) { (complete) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                UIView.animate(withDuration: 0.25, animations: { [weak self] in
+                    self?.actionLabel.alpha = 0.0
+                }, completion: { (complete) in
+                    // do nothihg?
+                })
+            })
+        }
+    }
+    
+    private func nodes() -> [SuperNodeView] {
         var nodes = [SuperNodeView]()
         
-        nodes.append(SuperNodeView(title: "blah", image: #imageLiteral(resourceName: "super_add_manual"), completion: { print("hello world") }))
+        // you can instantiate a node this way:
+        nodes.append(SuperNodeView(title: "Node 1", image: #imageLiteral(resourceName: "1"), completion: { [weak self] in self?.fadeDisplayText(text: "Node 1 Triggered") }))
         
-        let node1 = SuperNodeView()
-        node1.title = "test"
-        node1.image = #imageLiteral(resourceName: "super_clock_in")
-        node1.completion = { print(":this") }
-        nodes.append(node1)
-        
+        // or like this:
         let node2 = SuperNodeView()
-        node2.title = "test"
-        node2.image = #imageLiteral(resourceName: "super_clock_in")
-        node2.completion = { print(":this") }
+        node2.title = "Node 2"
+        node2.image = #imageLiteral(resourceName: "2")
+        node2.completion = { [weak self] in self?.fadeDisplayText(text: "Node 2 Triggered") }
         nodes.append(node2)
         
         let node3 = SuperNodeView()
-        node3.title = "test"
-        node3.image = #imageLiteral(resourceName: "super_clock_in")
-        node3.completion = { print(":this") }
-        //nodes.append(node3)
+        node3.title = "Node 3"
+        node3.image = #imageLiteral(resourceName: "3")
+        node3.completion = { [weak self] in self?.fadeDisplayText(text: "Node 3 Triggered") }
+        nodes.append(node3)
         
         let node4 = SuperNodeView()
-        node4.title = "test"
-        node4.image = #imageLiteral(resourceName: "super_clock_in")
-        node4.completion = { print(":this") }
-        //nodes.append(node4)
+        node4.title = "Node 4"
+        node4.image = #imageLiteral(resourceName: "4")
+        node4.completion = { [weak self] in self?.fadeDisplayText(text: "Node 4 Triggered") }
+        nodes.append(node4)
         
         let node5 = SuperNodeView()
-        node5.title = "test"
-        node5.image = #imageLiteral(resourceName: "super_clock_in")
-        node5.completion = { print(":this") }
+        node5.title = "Node 5"
+        node5.image = #imageLiteral(resourceName: "5")
+        node5.completion = { [weak self] in self?.fadeDisplayText(text: "Node 5 Triggered") }
         nodes.append(node5)
         
         let node6 = SuperNodeView()
-        node6.title = "test6"
-        node6.image = #imageLiteral(resourceName: "super_clock_in")
-        node6.completion = {
-            print(":this")
-        }
+        node6.title = "Node 6"
+        node6.image = #imageLiteral(resourceName: "6")
+        node6.completion = { [weak self] in self?.fadeDisplayText(text: "Node 6 Triggered") }
         nodes.append(node6)
+        
+        let node7 = SuperNodeView()
+        node7.title = "Node 7"
+        node7.image = #imageLiteral(resourceName: "7")
+        node7.completion = { [weak self] in self?.fadeDisplayText(text: "Node 7 Triggered") }
+        nodes.append(node7)
         
         return nodes
     }}

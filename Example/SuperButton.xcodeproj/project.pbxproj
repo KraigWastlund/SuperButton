@@ -269,21 +269,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SuperButton_Example/Pods-SuperButton_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SuperButton_Example/Pods-SuperButton_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SuperButton/SuperButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SuperButton.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperButton_Example/Pods-SuperButton_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SuperButton_Example/Pods-SuperButton_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		337B5ED1156D7F1DE2DE9872 /* [CP] Check Pods Manifest.lock */ = {
