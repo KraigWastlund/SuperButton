@@ -19,7 +19,7 @@ Three Buttons | Four Buttons | Five Buttons | Six Buttons | Seven Buttons
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
-iOS > 11.0
+iOS > 8.2
 
 ## Installation
 
