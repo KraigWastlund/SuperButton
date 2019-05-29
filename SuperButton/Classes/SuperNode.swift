@@ -89,7 +89,7 @@ public class SuperNodeView: UIView {
     }
     
     func isTouched(point: CGPoint) -> Bool {
-        if point.x > 0 && point.x < frame.width {
+        if point.x > 4 && point.x < frame.width - 4 {
             if point.y > 0 && point.y < frame.height + 40 {
                 return true
             }
@@ -137,7 +137,7 @@ public class SuperImageNode: UIImageView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = false
-        // alpha = 1.0
+        alpha = 1.0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -151,7 +151,7 @@ public class SuperImageNode: UIImageView {
             UIView.animate(withDuration: 0.15, animations: { [weak self] in
                 guard let s = self else { return }
                 s.transform = CGAffineTransform(scaleX: scale, y: scale)
-                // s.alpha = 1.0
+                s.alpha = 1.0
             })
             AudioServicesPlaySystemSound(1519) // Actuate `Peek` feedback (weak boom)
         }
@@ -167,7 +167,7 @@ public class SuperImageNode: UIImageView {
             UIView.animate(withDuration: 0.25, animations: { [weak self] in
                 guard let s = self else { return }
                 s.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                // s.alpha = 0.6
+                s.alpha = 0.8
             })
         }
     }
@@ -181,6 +181,7 @@ public class SuperImageNode: UIImageView {
         }) { [weak self] (complete: Bool) in
             guard let s = self else { return }
             s.isExploding = false
+            s.shrivel()
             if let block = completion {
                 block ()
             }

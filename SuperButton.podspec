@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SuperButton'
-  s.version          = '0.1.0'
+  s.version          = '0.5.0'
   s.summary          = 'Multifunction ui button'
   s.swift_version    = '4.0'
 
@@ -39,5 +39,5 @@ A button that expands into at most 7 buttons allowing more functionality in a sm
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  # s.dependency 
+  # s.dependency
 end

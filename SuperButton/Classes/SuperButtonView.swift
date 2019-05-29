@@ -14,8 +14,15 @@ var _nodeGrowScale: CGFloat = 2.0
 @available(iOS 8.2, *)
 public class SuperButtonView: UIView {
     
+    var path: UIBezierPath!
+    
+    let _nodeWidth = 60
     // width and height static values are used to layout buttons
-    var width: CGFloat = 360
+    var width: CGFloat {
+        get {
+            return CGFloat(self.nodes.count * _nodeWidth)
+        }
+    }
     var height: CGFloat = 300
     
     private let maxNumberOfNodes = 7
@@ -25,12 +32,6 @@ public class SuperButtonView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        if frame.width > 0 {
-            self.width = frame.width
-        }
-        if frame.height > 0 {
-            self.height = frame.height
-        }
     }
     
     convenience public init(nodes: [SuperNodeView], mainButtonColor: UIColor) {
@@ -67,12 +68,11 @@ public class SuperButtonView: UIView {
         self.addConstraint(NSLayoutConstraint(item: self.superButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
         self.addConstraint(NSLayoutConstraint(item: self.superButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -40.0))
         
-        let screenWidth = UIScreen.main.bounds.size.width
-        let nodeWidth = (screenWidth / CGFloat(nodes.count)) - 10
+        let nodeWidth = _nodeWidth
         let nodeHeight = nodeWidth * 2
         
         // super node views
-        let points = getNodeCenterPoints(numberOfNodes: self.nodes.count, nodeWidth: nodeWidth)
+        let points = getPoints()
         assert(points.count == self.nodes.count)
         
         
@@ -88,57 +88,6 @@ public class SuperButtonView: UIView {
             self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[node(\(nodeWidth))]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["node": node]))
             self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[node(\(nodeHeight))]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["node": node]))
         }
-    }
-    
-    private func getNodeCenterPoints(numberOfNodes: Int, nodeWidth: CGFloat) -> [CGPoint] {
-        
-        assert(numberOfNodes <= maxNumberOfNodes)
-        
-        var points = [CGPoint]()
-        for i in 0..<numberOfNodes {
-            points.append(point(buttonIndex: i, nodeWidth: nodeWidth))
-        }
-        
-        return points
-    }
-    
-    private func point(buttonIndex: Int, nodeWidth: CGFloat) -> CGPoint {
-        
-        // (all values are center)
-        let xPadding: CGFloat = nodeWidth
-        let startAndEndingYValue: CGFloat = 100
-        let middleYValue: CGFloat = 60
-        let startXValue: CGFloat = xPadding
-        let endingXValue: CGFloat = width - xPadding
-        
-        if buttonIndex == 0 {
-            return CGPoint(x: startXValue, y: startAndEndingYValue)
-        } else if buttonIndex == nodes.count - 1 {
-            return CGPoint(x: endingXValue, y: startAndEndingYValue)
-        }
-        
-        let differenceBetweenStartAndEndX = endingXValue - startXValue
-        let xSeparation = differenceBetweenStartAndEndX / CGFloat(nodes.count - 1)
-        
-        let x = startXValue + (xSeparation * CGFloat(buttonIndex))
-        var percentage: CGFloat = (x - startXValue) / differenceBetweenStartAndEndX
-        
-        if percentage == 0.5 {
-            return CGPoint(x: x, y: middleYValue)
-        }
-        
-        var y: CGFloat!
-        if percentage < 0.5 {
-            percentage *= 2.0
-            y = startAndEndingYValue - (percentage * (startAndEndingYValue - middleYValue))
-        } else {
-            let amountOverFiftyPercent = percentage - 0.5
-            percentage = 0.5 - amountOverFiftyPercent
-            percentage *= 2.0
-            y = startAndEndingYValue - (percentage * (startAndEndingYValue - middleYValue))
-        }
-        
-        return CGPoint(x: x, y: y)
     }
     
     func showNodes() {
@@ -204,5 +153,42 @@ public class SuperButtonView: UIView {
         self.superButton.shrivel()
         self.hideNodes()
         self.shrivelAllNodes()
+    }
+}
+
+// bezier path
+@available(iOS 8.2, *)
+extension SuperButtonView {
+    
+    private func getPoints() -> [CGPoint] {
+        let xyPadding = CGFloat((nodes.count - 1) * 11)
+        let p0 = CGPoint(x: xyPadding, y: 120)
+        let p1 = CGPoint(x: width / 2, y: 60)
+        let p2 = CGPoint(x: width - xyPadding, y: 120)
+        
+        var percents = [CGFloat]()
+        for p in 0..<nodes.count {
+            let percent = Float(p)/Float(nodes.count - 1)
+            percents.append(CGFloat(percent))
+        }
+        
+        var points = [CGPoint]()
+        for p in percents {
+            let newY = getPointAtPercent(t: p, start: p0.y , c1: p1.y, end: p2.y)
+            let newX = getPointAtPercent(t: p, start: p0.x , c1: p1.x, end: p2.x)
+            points.append(CGPoint(x: newX, y: newY))
+        }
+        
+        return points
+    }
+    
+    func getPointAtPercent(t: CGFloat, start: CGFloat, c1: CGFloat, end: CGFloat ) -> CGFloat {
+        let t_: CGFloat = (1.0 - t)
+        let tt_: CGFloat = t_ * t_
+        let tt: CGFloat = t * t
+        
+        return start * tt_
+            + 2.0 * c1 * t_ * t
+            + end * tt
     }
 }

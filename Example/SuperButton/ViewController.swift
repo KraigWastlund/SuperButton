@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     
     private func setup() {
         assert(superButtonView != nil)
-        self.view.backgroundColor = .lightGray
         self.superButtonView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.superButtonView)
         let views = [ "super": self.superButtonView! ]
@@ -42,7 +41,7 @@ class ViewController: UIViewController {
                 UIView.animate(withDuration: 0.25, animations: { [weak self] in
                     self?.actionLabel.alpha = 0.0
                 }, completion: { (complete) in
-                    // do nothihg?
+                    // do nothing
                 })
             })
         }
@@ -72,19 +71,19 @@ class ViewController: UIViewController {
         node4.image = #imageLiteral(resourceName: "4")
         node4.completion = { [weak self] in self?.fadeDisplayText(text: "Node 4 Triggered") }
         nodes.append(node4)
-        
+
         let node5 = SuperNodeView()
         node5.title = "Node 5"
         node5.image = #imageLiteral(resourceName: "5")
         node5.completion = { [weak self] in self?.fadeDisplayText(text: "Node 5 Triggered") }
         nodes.append(node5)
-        
+
         let node6 = SuperNodeView()
         node6.title = "Node 6"
         node6.image = #imageLiteral(resourceName: "6")
         node6.completion = { [weak self] in self?.fadeDisplayText(text: "Node 6 Triggered") }
         nodes.append(node6)
-        
+
         let node7 = SuperNodeView()
         node7.title = "Node 7"
         node7.image = #imageLiteral(resourceName: "7")
