@@ -14,16 +14,11 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		64321FCF229EEA5E00C3DEAE /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64321FC5229EEA5E00C3DEAE /* 4.jpg */; };
 		64321FD0229EEA5E00C3DEAE /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 64321FC6229EEA5E00C3DEAE /* 4.png */; };
 		64321FD1229EEA5E00C3DEAE /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 64321FC7229EEA5E00C3DEAE /* 5.png */; };
-		64321FD2229EEA5E00C3DEAE /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64321FC8229EEA5E00C3DEAE /* 5.jpg */; };
-		64321FD3229EEA5E00C3DEAE /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64321FC9229EEA5E00C3DEAE /* 7.jpg */; };
 		64321FD4229EEA5E00C3DEAE /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 64321FCA229EEA5E00C3DEAE /* 7.png */; };
 		64321FD5229EEA5E00C3DEAE /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 64321FCB229EEA5E00C3DEAE /* 6.png */; };
-		64321FD6229EEA5E00C3DEAE /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64321FCC229EEA5E00C3DEAE /* 6.jpg */; };
 		64321FD7229EEA5E00C3DEAE /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 64321FCD229EEA5E00C3DEAE /* 3.png */; };
-		64321FD8229EEA5E00C3DEAE /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64321FCE229EEA5E00C3DEAE /* 3.jpg */; };
 		B96A20D74CAADDAABE862324 /* Pods_SuperButton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910D954B5E60FDAE4AAA2FD2 /* Pods_SuperButton_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,16 +46,11 @@
 		607FACE51AFB9204008FA782 /* SuperButton_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperButton_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		64321FC5229EEA5E00C3DEAE /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		64321FC6229EEA5E00C3DEAE /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		64321FC7229EEA5E00C3DEAE /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
-		64321FC8229EEA5E00C3DEAE /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
-		64321FC9229EEA5E00C3DEAE /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
 		64321FCA229EEA5E00C3DEAE /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		64321FCB229EEA5E00C3DEAE /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
-		64321FCC229EEA5E00C3DEAE /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
 		64321FCD229EEA5E00C3DEAE /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
-		64321FCE229EEA5E00C3DEAE /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		7DBC6ADEC2BB8D3C2B18E2D7 /* SuperButton.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SuperButton.podspec; path = ../SuperButton.podspec; sourceTree = "<group>"; };
 		8094029D5639AC4B2D013F5D /* Pods-SuperButton_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperButton_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperButton_Example/Pods-SuperButton_Example.release.xcconfig"; sourceTree = "<group>"; };
 		910D954B5E60FDAE4AAA2FD2 /* Pods_SuperButton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,16 +164,11 @@
 		64321FC4229EEA5E00C3DEAE /* ReadmeResources */ = {
 			isa = PBXGroup;
 			children = (
-				64321FC5229EEA5E00C3DEAE /* 4.jpg */,
 				64321FC6229EEA5E00C3DEAE /* 4.png */,
 				64321FC7229EEA5E00C3DEAE /* 5.png */,
-				64321FC8229EEA5E00C3DEAE /* 5.jpg */,
-				64321FC9229EEA5E00C3DEAE /* 7.jpg */,
 				64321FCA229EEA5E00C3DEAE /* 7.png */,
 				64321FCB229EEA5E00C3DEAE /* 6.png */,
-				64321FCC229EEA5E00C3DEAE /* 6.jpg */,
 				64321FCD229EEA5E00C3DEAE /* 3.png */,
-				64321FCE229EEA5E00C3DEAE /* 3.jpg */,
 			);
 			name = ReadmeResources;
 			path = ../ReadmeResources;
@@ -287,17 +272,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64321FD6229EEA5E00C3DEAE /* 6.jpg in Resources */,
 				64321FD4229EEA5E00C3DEAE /* 7.png in Resources */,
-				64321FCF229EEA5E00C3DEAE /* 4.jpg in Resources */,
 				64321FD7229EEA5E00C3DEAE /* 3.png in Resources */,
-				64321FD8229EEA5E00C3DEAE /* 3.jpg in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				64321FD5229EEA5E00C3DEAE /* 6.png in Resources */,
-				64321FD3229EEA5E00C3DEAE /* 7.jpg in Resources */,
 				64321FD1229EEA5E00C3DEAE /* 5.png in Resources */,
-				64321FD2229EEA5E00C3DEAE /* 5.jpg in Resources */,
 				64321FD0229EEA5E00C3DEAE /* 4.png in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
