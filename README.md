@@ -7,8 +7,8 @@
 
 ## Example
 Motion
-:-------------------------:
-<img src="ReadmeResources/example_150_half.gif" width="150"> 
+:-------------------------:|
+<img src="ReadmeResources/example_150_half.gif" width="150">  |
 
 
 Three Buttons | Four Buttons | Five Buttons | Six Buttons | Seven Buttons
