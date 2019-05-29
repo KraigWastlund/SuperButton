@@ -14,7 +14,7 @@ Motion
 
 Three Buttons | Four Buttons | Five Buttons | Six Buttons | Seven Buttons
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/3.png" width="150">  |  <img src="https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/4.png" width="150">  |  <img src="https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/5.png" width="150">  |  <img src="https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/6.png" width="150">  |  <img src="https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/7.png" width="150"> 
+![picture](https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/3.png)  |  ![picture](https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/4.png)  |  ![picture](https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/5.png)  |  ![picture](https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/6.png)  |  ![picture](https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/7.png) 
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
