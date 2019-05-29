@@ -12,87 +12,53 @@ import SuperButton
 
 class ViewController: UIViewController {
 
-var superButtonView: SuperButtonView!
+    var superButtonView: SuperButtonView!
 
-@IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet weak var actionLabel: UILabel!
 
-override func viewDidLoad() {
-super.viewDidLoad()
-let mainButtonColor = UIColor(red: 0/255, green: 21/255, blue: 211/255, alpha: 1.0)
-superButtonView = SuperButtonView(nodes: nodes(), mainButtonColor: mainButtonColor)
-setup()
-}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // ... create the super button and give the main button the color you'd like
+        let mainButtonColor = UIColor(red: 0/255, green: 21/255, blue: 211/255, alpha: 1.0)
+        superButtonView = SuperButtonView(nodes: nodes(), mainButtonColor: mainButtonColor)
+        setup()
+    }
 
-private func setup() {
-assert(superButtonView != nil)
-self.superButtonView.translatesAutoresizingMaskIntoConstraints = false
-self.view.addSubview(self.superButtonView)
-let views = [ "super": self.superButtonView! ]
-self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[super]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: views))
-self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[super(300)]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: views))
-}
+    private func setup() {
+        // ... constrain / setup ui elements how you'd like
+        // ... you can use frame/storyboard if you'd like
+        // ... buttons always have a static width and space out from center
+        self.superButtonView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.superButtonView)
+        let views = [ "super": self.superButtonView! ]
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[super]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[super(300)]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: views))
+    }
 
-private func fadeDisplayText(text: String) {
-actionLabel.alpha = 0.0
-actionLabel.text = text
-UIView.animate(withDuration: 0.25, animations: { [weak self] in
-self?.actionLabel.alpha = 1.0
-}) { (complete) in
-DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-UIView.animate(withDuration: 0.25, animations: { [weak self] in
-self?.actionLabel.alpha = 0.0
-}, completion: { (complete) in
-// do nothing
-})
-})
-}
-}
+    private func fadeDisplayText(text: String) {
+        // ... displays text in a cool way :)
+    }
 
-private func nodes() -> [SuperNodeView] {
-var nodes = [SuperNodeView]()
+    private func nodes() -> [SuperNodeView] {
+        var nodes = [SuperNodeView]()
 
-// you can instantiate a node this way:
-nodes.append(SuperNodeView(title: "Node 1", image: #imageLiteral(resourceName: "1"), completion: { [weak self] in self?.fadeDisplayText(text: "Node 1 Triggered") }))
+        // ... note that the main button takes a color and the `node` buttons take an image.
 
-// or like this:
-let node2 = SuperNodeView()
-node2.title = "Node 2"
-node2.image = #imageLiteral(resourceName: "2")
-node2.completion = { [weak self] in self?.fadeDisplayText(text: "Node 2 Triggered") }
-nodes.append(node2)
+        // ... you can instantiate a node this way:
+        nodes.append(SuperNodeView(title: "Node 1", image: #imageLiteral(resourceName: "1"), completion: { [weak self] in self?.fadeDisplayText(text: "Node 1 Triggered") }))
 
-let node3 = SuperNodeView()
-node3.title = "Node 3"
-node3.image = #imageLiteral(resourceName: "3")
-node3.completion = { [weak self] in self?.fadeDisplayText(text: "Node 3 Triggered") }
-nodes.append(node3)
+        // ... or like this:
+        let node2 = SuperNodeView()
+        node2.title = "Node 2"
+        node2.image = #imageLiteral(resourceName: "2")
+        node2.completion = { [weak self] in self?.fadeDisplayText(text: "Node 2 Triggered") }
+        nodes.append(node2)
 
-let node4 = SuperNodeView()
-node4.title = "Node 4"
-node4.image = #imageLiteral(resourceName: "4")
-node4.completion = { [weak self] in self?.fadeDisplayText(text: "Node 4 Triggered") }
-nodes.append(node4)
+        // ... add more buttons at your leisure
 
-let node5 = SuperNodeView()
-node5.title = "Node 5"
-node5.image = #imageLiteral(resourceName: "5")
-node5.completion = { [weak self] in self?.fadeDisplayText(text: "Node 5 Triggered") }
-nodes.append(node5)
-
-let node6 = SuperNodeView()
-node6.title = "Node 6"
-node6.image = #imageLiteral(resourceName: "6")
-node6.completion = { [weak self] in self?.fadeDisplayText(text: "Node 6 Triggered") }
-nodes.append(node6)
-
-let node7 = SuperNodeView()
-node7.title = "Node 7"
-node7.image = #imageLiteral(resourceName: "7")
-node7.completion = { [weak self] in self?.fadeDisplayText(text: "Node 7 Triggered") }
-nodes.append(node7)
-
-return nodes
-}
+        return nodes
+    }
 }
 ```
 
