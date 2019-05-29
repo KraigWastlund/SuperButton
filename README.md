@@ -6,7 +6,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/SuperButton.svg?style=flat)](https://cocoapods.org/pods/SuperButton)
 
 ## Example
-<img src="ReadmeResources/example.gif" width="150"> 
+Motion
+:-------------------------:
+<img src="ReadmeResources/example_150_half.gif" width="150"> 
 
 
 Three Buttons | Four Buttons | Five Buttons | Six Buttons | Seven Buttons
