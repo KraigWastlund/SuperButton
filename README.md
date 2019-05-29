@@ -31,53 +31,53 @@ pod 'SuperButton'
 ```
 
 ## Usage
-```
+```swift
 import SuperButton
 
 class ViewController: UIViewController {
 
-var superButtonView: SuperButtonView!
+    var superButtonView: SuperButtonView!
 
-@IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet weak var actionLabel: UILabel!
 
-override func viewDidLoad() {
-super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-// ... create the super button and give the main button the color you'd like
-let mainButtonColor = UIColor(red: 0/255, green: 21/255, blue: 211/255, alpha: 1.0)
-superButtonView = SuperButtonView(nodes: nodes(), mainButtonColor: mainButtonColor)
-setup()
-}
+        // ... create the super button and give the main button the color you'd like
+        let mainButtonColor = UIColor(red: 0/255, green: 21/255, blue: 211/255, alpha: 1.0)
+        superButtonView = SuperButtonView(nodes: nodes(), mainButtonColor: mainButtonColor)
+        setup()
+    }
 
-private func setup() {
-// ... constrain / setup ui elements how you'd like
-// ... you can use frame/storyboard if you'd like
-// ... buttons always have a static width and space out from center
-}
+    private func setup() {
+        // ... constrain / setup ui elements how you'd like
+        // ... you can use frame/storyboard if you'd like
+        // ... buttons always have a static width and space out from center
+    }
 
-private func fadeDisplayText(text: String) {
-// ... displays text in a cool way :)
-}
+    private func fadeDisplayText(text: String) {
+        // ... displays text in a cool way :)
+    }
 
-private func nodes() -> [SuperNodeView] {
-var nodes = [SuperNodeView]()
+    private func nodes() -> [SuperNodeView] {
+        var nodes = [SuperNodeView]()
 
-// ... note that the main button takes a color and the `node` buttons take an image.
+        // ... note that the main button takes a color and the `node` buttons take an image.
 
-// ... you can instantiate a node this way:
-nodes.append(SuperNodeView(title: "Node 1", image: #imageLiteral(resourceName: "1"), completion: { [weak self] in self?.fadeDisplayText(text: "Node 1 Triggered") }))
+        // ... you can instantiate a node this way:
+        nodes.append(SuperNodeView(title: "Node 1", image: #imageLiteral(resourceName: "1"), completion: { [weak self] in self?.fadeDisplayText(text: "Node 1 Triggered") }))
 
-// ... or like this:
-let node2 = SuperNodeView()
-node2.title = "Node 2"
-node2.image = #imageLiteral(resourceName: "2")
-node2.completion = { [weak self] in self?.fadeDisplayText(text: "Node 2 Triggered") }
-nodes.append(node2)
+        // ... or like this:
+        let node2 = SuperNodeView()
+        node2.title = "Node 2"
+        node2.image = #imageLiteral(resourceName: "2")
+        node2.completion = { [weak self] in self?.fadeDisplayText(text: "Node 2 Triggered") }
+        nodes.append(node2)
 
-// ... add more buttons at your leisure
+        // ... add more buttons at your leisure
 
-return nodes
-}
+        return nodes
+    }
 }
 ```
 
