@@ -91,5 +91,6 @@ class ViewController: UIViewController {
         nodes.append(node7)
         
         return nodes
-    }}
+    }
+}
 
