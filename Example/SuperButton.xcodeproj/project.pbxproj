@@ -156,7 +156,6 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				64321FC3229EE8B300C3DEAE /* 3.png */,
 				64321FB6229EE5D100C3DEAE /* Resources */,
 				7DBC6ADEC2BB8D3C2B18E2D7 /* SuperButton.podspec */,
 				B813FA25631441B91B7CA335 /* README.md */,
@@ -169,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				64321FB9229EE5E400C3DEAE /* 3.png */,
+				64321FC3229EE8B300C3DEAE /* 3.png */,
 				64321FBA229EE5E400C3DEAE /* 4.png */,
 				64321FBB229EE5E400C3DEAE /* 5.png */,
 				64321FB8229EE5E400C3DEAE /* 6.png */,
