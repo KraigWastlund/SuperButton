@@ -9,7 +9,7 @@
 
 Motion
 :-------------------------:|
-<img src="ReadmeResources/example_150_half.gif" width="150">  |
+![picture](ReadmeResources/example_150_half.gif) |
 
 
 Three Buttons | Four Buttons | Five Buttons | Six Buttons | Seven Buttons
@@ -20,6 +20,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 iOS > 8.2
+Maximum number of buttons supported = 7
 
 ## Installation
 
