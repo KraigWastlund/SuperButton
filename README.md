@@ -6,7 +6,11 @@
 [![Platform](https://img.shields.io/cocoapods/p/SuperButton.svg?style=flat)](https://cocoapods.org/pods/SuperButton)
 
 ## Example
-<img src="ReadmeResources/3.png" width="100">.
+<img src="ReadmeResources/3.png" width="150">
+<img src="ReadmeResources/4.png" width="150">
+<img src="ReadmeResources/5.png" width="150">
+<img src="ReadmeResources/6.png" width="150">
+<img src="ReadmeResources/7.png" width="150">
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
