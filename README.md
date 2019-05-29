@@ -9,7 +9,7 @@
 
 Motion
 :-------------------------:|
-![picture](ReadmeResources/example_150_half.gif) |
+![picture](https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/example_150_half.gif) |
 
 
 Three Buttons | Four Buttons | Five Buttons | Six Buttons | Seven Buttons
