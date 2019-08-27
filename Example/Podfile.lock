@@ -1,5 +1,5 @@
 PODS:
-  - SuperButton (0.5.0)
+  - SuperButton (0.6.9)
 
 DEPENDENCIES:
   - SuperButton (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SuperButton: 75376fd2faf5ae843b2f6f43396e98da543121ec
+  SuperButton: 7242a40b83057bf9c00a562882aee4fc397c01af
 
 PODFILE CHECKSUM: 8300f34d0690b316669e011910fcac97b0dadc96
 
-COCOAPODS: 1.7.0
+COCOAPODS: 1.7.5

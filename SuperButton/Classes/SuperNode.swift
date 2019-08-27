@@ -13,7 +13,7 @@ import AVKit
 @available(iOS 8.2, *)
 public class SuperNodeView: UIView {
     
-    let superImageNode = SuperImageNode(frame: CGRect.zero)
+    public let superImageNode = SuperImageNode(frame: CGRect.zero)
     private let titleLabel = UILabel()
     var titleLabelYConstraint: NSLayoutConstraint!
     
@@ -34,16 +34,21 @@ public class SuperNodeView: UIView {
     }
     
     var titleLabelFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .light)
-    var titleLabelTextColor: UIColor = .white
     
-    convenience public init(title: String, image: UIImage, completion: @escaping ()->Void) {
+    convenience public init(title: String, image: UIImage, tintColor: UIColor? = nil, completion: @escaping ()->Void) {
         self.init()
-        initSet(title: title, image: image, completion: completion)
+        initSet(title: title, image: image, tintColor: tintColor, completion: completion)
     }
     
-    private func initSet(title: String, image: UIImage, completion: @escaping ()->Void) {
+    private func initSet(title: String, image: UIImage, tintColor: UIColor?, completion: @escaping ()->Void) {
         self.title = title
-        self.image = image
+        if let c = tintColor {
+            self.superImageNode.tintColor = c
+            self.titleLabel.textColor = c
+            self.image = image.withRenderingMode(.alwaysTemplate)
+        } else {
+            self.image = image
+        }
         self.completion = completion
     }
     
@@ -65,7 +70,7 @@ public class SuperNodeView: UIView {
         titleLabel.frame = CGRect.zero
         titleLabel.textAlignment = .center
         titleLabel.font = titleLabelFont
-        titleLabel.textColor = titleLabelTextColor
+        titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.text = "Test Label"
         titleLabel.transform = CGAffineTransform(scaleX: 0, y: 0)
         addSubview(titleLabel)

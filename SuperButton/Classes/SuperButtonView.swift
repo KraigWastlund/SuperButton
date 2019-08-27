@@ -6,6 +6,8 @@
 //  Copyright © 2017 Kraig Wastlund. All rights reserved.
 //
 
+// This view is designed to go edge of screen to edge of screen
+
 import UIKit
 import AVFoundation
 
@@ -16,20 +18,34 @@ public class SuperButtonView: UIView {
     
     var path: UIBezierPath!
     
-    let _nodeWidth = 60
+    let _desiredMinSideMargin: CGFloat = 40
+    
+    let _xPadding: CGFloat = 10
+    var _nodeWidth: CGFloat {
+        get {
+            let screenWidth = UIScreen.main.bounds.width
+            let divider = (screenWidth - _desiredMinSideMargin * 2) / CGFloat(nodes.count) - _xPadding
+            return min(divider, 60)
+        }
+    }
     // width and height static values are used to layout buttons
     var width: CGFloat {
         get {
-            return CGFloat(self.nodes.count * _nodeWidth)
+            return CGFloat(self.nodes.count) * (_xPadding + _nodeWidth)
         }
     }
     var height: CGFloat = 300
     
     private let maxNumberOfNodes = 7
     
-    var nodes: [SuperNodeView]!
+    private var nodes: [SuperNodeView]! {
+        didSet {
+            destroyViews()
+            setupViews()
+        }
+    }
     var superButton: SuperButton!
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -45,13 +61,17 @@ public class SuperButtonView: UIView {
         super.init(coder: aDecoder)
     }
     
+    public func swapNodes(nodes: [SuperNodeView]) {
+        self.nodes = nodes
+    }
+    
     func destroyViews() {
         for view in self.subviews {
             view.removeFromSuperview()
         }
     }
     
-    func setupViews() {        
+    func setupViews() {
         self.addSubview(self.superButton)
         for node in self.nodes {
             self.addSubview(node)
@@ -75,9 +95,8 @@ public class SuperButtonView: UIView {
         let points = getPoints()
         assert(points.count == self.nodes.count)
         
-        
+        let superCenter = CGPoint(x: width / 2, y: height / 2)
         for (i, node) in self.nodes.enumerated() {
-            let superCenter = CGPoint(x: width / 2, y: height / 2)
             let point = points[i]
             
             // x and y
@@ -161,10 +180,23 @@ public class SuperButtonView: UIView {
 extension SuperButtonView {
     
     private func getPoints() -> [CGPoint] {
-        let xyPadding = CGFloat((nodes.count - 1) * 11)
-        let p0 = CGPoint(x: xyPadding, y: 120)
-        let p1 = CGPoint(x: width / 2, y: 60)
-        let p2 = CGPoint(x: width - xyPadding, y: 120)
+        
+        let screenWidth = UIScreen.main.bounds.width
+        
+        let nodeCenterToCenterDim: CGFloat = _nodeWidth + _xPadding
+        let centerX: CGFloat = width / 2
+        let nodeCountMultiplier = CGFloat(nodes.count / 2)
+        let distanceFromCenterToOutside: CGFloat = nodeCountMultiplier * nodeCenterToCenterDim
+        
+        assert(screenWidth >= distanceFromCenterToOutside * 2 + _desiredMinSideMargin * 2, "******max node count supported is 7******")
+        
+        let p0 = CGPoint(x: centerX - distanceFromCenterToOutside, y: 120)
+        let p1 = CGPoint(x: centerX, y: 60)
+        let p2 = CGPoint(x: centerX + distanceFromCenterToOutside, y: 120)
+        
+        if nodes.count == 1 {
+            return [p1]
+        }
         
         var percents = [CGFloat]()
         for p in 0..<nodes.count {
