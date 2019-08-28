@@ -7,7 +7,7 @@
 
 ## Example
 
-Motion
+Motion-
 :-------------------------:|
 ![picture](https://raw.githubusercontent.com/KraigWastlund/SuperButton/master/ReadmeResources/example_150_half.gif) |
 
