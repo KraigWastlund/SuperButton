@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SuperButton'
-  s.version          = '0.7.0'
+  s.version          = '1.0.0'
   s.summary          = 'Multifunction ui button'
   s.swift_version    = '4.0'
 

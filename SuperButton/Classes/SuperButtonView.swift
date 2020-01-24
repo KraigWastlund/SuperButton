@@ -19,22 +19,28 @@ public class SuperButtonView: UIView {
     var path: UIBezierPath!
     
     let _desiredMinSideMargin: CGFloat = 40
+    let _standardNodeWidth: CGFloat = 40
     
-    let _xPadding: CGFloat = 10
     var _nodeWidth: CGFloat {
         get {
-            let screenWidth = UIScreen.main.bounds.width
-            let divider = (screenWidth - _desiredMinSideMargin * 2) / CGFloat(nodes.count) - _xPadding
-            return min(divider, 60)
+            // let screenWidth = UIScreen.main.bounds.width
+            // let divider = (screenWidth - (_desiredMinSideMargin * 2)) / CGFloat(nodes.count) - (_xPadding * sizeMultiplier)
+            // return min(divider, 60)
+            return _standardNodeWidth * sizeMultiplier
         }
     }
+    
+    // size multiplier dictates width/height of ui elements (1.0 = normal)
+    var sizeMultiplier: CGFloat!
+    var nodePadding: CGFloat!
+     
     // width and height static values are used to layout buttons
     var width: CGFloat {
         get {
-            return CGFloat(self.nodes.count) * (_xPadding + _nodeWidth)
+            return CGFloat(self.nodes.count) * ((nodePadding) + (_nodeWidth * sizeMultiplier))
         }
     }
-    var height: CGFloat = 300
+    var height: CGFloat!
     
     private let maxNumberOfNodes = 7
     
@@ -50,10 +56,13 @@ public class SuperButtonView: UIView {
         super.init(frame: frame)
     }
     
-    convenience public init(nodes: [SuperNodeView], mainButtonColor: UIColor) {
+    convenience public init(nodes: [SuperNodeView], mainButtonColor: UIColor, sizeMultiplier: CGFloat = 1.0, desiredHeight: CGFloat = 300, nodePadding: CGFloat = 10) {
         self.init()
+        self.sizeMultiplier = sizeMultiplier
+        self.nodePadding = nodePadding
         self.nodes = nodes
-        self.superButton = SuperButton(color: mainButtonColor)
+        self.height = desiredHeight
+        self.superButton = SuperButton(color: mainButtonColor, dimension: (80 * sizeMultiplier) / 2)
         setupViews()
     }
     
@@ -82,14 +91,16 @@ public class SuperButtonView: UIView {
     
     private func setUpConstraints() {
         
+        let superButtonDim = 80 * sizeMultiplier
+        
         // super button
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[super(80)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["super": self.superButton]))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[super(80)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["super": self.superButton]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[super(\(superButtonDim))]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["super": self.superButton]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[super(\(superButtonDim))]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["super": self.superButton]))
         self.addConstraint(NSLayoutConstraint(item: self.superButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
         self.addConstraint(NSLayoutConstraint(item: self.superButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -40.0))
         
-        let nodeWidth = _nodeWidth
-        let nodeHeight = nodeWidth * 2
+        let nodeWidth = _nodeWidth * sizeMultiplier
+        let nodeHeight = nodeWidth * 2 * sizeMultiplier
         
         // super node views
         let points = getPoints()
@@ -108,7 +119,7 @@ public class SuperButtonView: UIView {
             self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[node(\(nodeHeight))]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["node": node]))
         }
     }
-    
+        
     func showNodes() {
         assert(nodes.count > 0)
         UIView.animate(withDuration: 0.25, animations: {
@@ -181,18 +192,25 @@ extension SuperButtonView {
     
     private func getPoints() -> [CGPoint] {
         
+        let outsideYPosition = 120 * sizeMultiplier
+        let insideYPosition = 60 * sizeMultiplier
+        
         let screenWidth = UIScreen.main.bounds.width
         
-        let nodeCenterToCenterDim: CGFloat = _nodeWidth + _xPadding
         let centerX: CGFloat = width / 2
         let nodeCountMultiplier = CGFloat(nodes.count / 2)
-        let distanceFromCenterToOutside: CGFloat = nodeCountMultiplier * nodeCenterToCenterDim
+        let distanceFromCenterToOutside: CGFloat = nodeCountMultiplier * (_standardNodeWidth * sizeMultiplier + nodePadding)
         
-        assert(screenWidth >= distanceFromCenterToOutside * 2 + _desiredMinSideMargin * 2, "******max node count supported is 7******")
+        if screenWidth < distanceFromCenterToOutside * 2 + _desiredMinSideMargin * 2 {
+            print("########################################################################################################\n\nUI Elements may not appear as intended.\nCheck the following:1. node count is too high\n2. size multiplier is too large\n3. nodepadding is too large\nTry lowering the sizeMultiplier or reduce the number of nodes.\n\n########################################################################################################")
+        }
         
-        let p0 = CGPoint(x: centerX - distanceFromCenterToOutside, y: 120)
-        let p1 = CGPoint(x: centerX, y: 60)
-        let p2 = CGPoint(x: centerX + distanceFromCenterToOutside, y: 120)
+        let p0 = CGPoint(x: centerX - distanceFromCenterToOutside, y: outsideYPosition)
+        let p1 = CGPoint(x: centerX, y: insideYPosition)
+        let p2 = CGPoint(x: centerX + distanceFromCenterToOutside, y: outsideYPosition)
+        
+        // 7 buttons = centerX(120) distanceFromCenterToOutside(102.85)
+        // 4 buttons = centerX(120) distanceFromCenterToOutside(120)
         
         if nodes.count == 1 {
             return [p1]

@@ -9,15 +9,17 @@ import AVKit
 
 public class SuperButton: UIImageView {
     var isExploding: Bool = false
+    var dimension: CGFloat!
     
-    convenience init(color: UIColor) {
+    convenience init(color: UIColor, dimension: CGFloat) {
         self.init(frame: CGRect.zero)
         self.backgroundColor = color
+        self.dimension = dimension
+        setup()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,7 +31,7 @@ public class SuperButton: UIImageView {
         self.frame = CGRect.zero
         self.isUserInteractionEnabled = false
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = 40
+        self.layer.cornerRadius = dimension
         setImage()
     }
     
