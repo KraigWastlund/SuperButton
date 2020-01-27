@@ -19,7 +19,7 @@ public class SuperButtonView: UIView {
     var path: UIBezierPath!
     
     let _desiredMinSideMargin: CGFloat = 40
-    let _standardNodeWidth: CGFloat = 40
+    let _standardNodeWidth: CGFloat = 50
     
     var _nodeWidth: CGFloat {
         get {
