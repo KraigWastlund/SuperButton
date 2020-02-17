@@ -94,7 +94,6 @@ public class SuperNodeView: UIView {
     }
     
     func isTouched(point: CGPoint) -> Bool {
-        print(point)
         if point.x > 4 && point.x < frame.width - 4 {
             if point.y + (frame.height * 0.25) > 0 && point.y < frame.height {
                 return true
