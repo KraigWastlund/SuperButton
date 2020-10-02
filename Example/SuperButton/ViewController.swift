@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let mainButtonColor = UIColor(red: 0/255, green: 21/255, blue: 211/255, alpha: 1.0)
-        superButtonView = SuperButtonView(nodes: nodes(), mainButtonColor: mainButtonColor)
+        superButtonView = SuperButtonView(nodes: nodes(), mainButtonColor: mainButtonColor, delegate: self)
         setup()
     }
     
@@ -91,6 +91,12 @@ class ViewController: UIViewController {
         nodes.append(node7)
         
         return nodes
+    }
+}
+
+extension ViewController: SuperButtonActivity {
+    func superButtonActive(_ active: Bool) {
+        print("Super button active: \(active)")
     }
 }
 

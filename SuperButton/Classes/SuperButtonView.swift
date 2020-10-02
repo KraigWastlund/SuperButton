@@ -56,13 +56,14 @@ public class SuperButtonView: UIView {
         super.init(frame: frame)
     }
     
-    convenience public init(nodes: [SuperNodeView], mainButtonColor: UIColor, sizeMultiplier: CGFloat = 1.0, desiredHeight: CGFloat = 300, nodePadding: CGFloat = 10) {
+    convenience public init(nodes: [SuperNodeView], mainButtonColor: UIColor, sizeMultiplier: CGFloat = 1.0, desiredHeight: CGFloat = 300, nodePadding: CGFloat = 10, delegate: SuperButtonActivity? = nil) {
         self.init()
         self.sizeMultiplier = sizeMultiplier
         self.nodePadding = nodePadding
         self.nodes = nodes
         self.height = desiredHeight
         self.superButton = SuperButton(color: mainButtonColor, dimension: (80 * sizeMultiplier) / 2)
+        self.superButton.delegate = delegate
         setupViews()
     }
     

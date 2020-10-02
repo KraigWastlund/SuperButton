@@ -7,9 +7,14 @@ import Foundation
 import UIKit
 import AVKit
 
+public protocol SuperButtonActivity {
+    func superButtonActive(_ active: Bool)
+}
+
 public class SuperButton: UIImageView {
     var isExploding: Bool = false
     var dimension: CGFloat!
+    var delegate: SuperButtonActivity?
     
     convenience init(color: UIColor, dimension: CGFloat) {
         self.init(frame: CGRect.zero)
@@ -45,6 +50,7 @@ public class SuperButton: UIImageView {
     
     func growNodesAndRotate() {
         if !self.isGrown() {
+            self.delegate?.superButtonActive(true)
             self.layer.zPosition = 2
             UIView.animate(withDuration: 0.15, animations: { [weak self] in
                 guard let s = self else { return }
@@ -60,23 +66,12 @@ public class SuperButton: UIImageView {
     
     func shrivel() {
         if !isExploding {
+            self.delegate?.superButtonActive(false)
             self.layer.zPosition = 1
             UIView.animate(withDuration: 0.25, animations: { [weak self] in
                 guard let s = self else { return }
                 s.transform = CGAffineTransform.identity.rotated(by: 0)
             })
-        }
-    }
-    
-    func explode(completion: (() -> Void)?) {
-        self.isExploding = true
-        UIView.animate(withDuration: 0.15, animations: {
-            self.transform = CGAffineTransform(scaleX: 5.0, y: 5.0)
-        }) { (complete: Bool) in
-            self.isExploding = false
-            if let block = completion {
-                block ()
-            }
         }
     }
 }
